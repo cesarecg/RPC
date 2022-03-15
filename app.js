@@ -9,14 +9,16 @@ const possibleChoices = document.querySelectorAll('button')
 //global choice variable
 
 let userChoice 
+let computerChoice
 let result
 
-//For every button Clicked, display the target id in the html
+//For every button Clicked, display the target id in the html & display result
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e)=> {
    userChoice = e.target.id
    userChoiceDisplay.innerHTML = userChoice
    generateComputerChoice()
+   getResult()
 }))
 
 function generateComputerChoice(){
@@ -39,12 +41,22 @@ function getResult(){
         result = 'DRAW'
     }
     if(computerChoice === 'Rock'  && userChoice === 'Paper'){
-        result = 'YOU LOST'
+        result = 'YOU WON'
     }
     if(computerChoice === 'Rock'  && userChoice === 'Scissors'){
         result = 'YOU LOST'
     }
-    if(computerChoice === 'Rock'  && userChoice === 'Scissors'){
+    if(computerChoice === 'Paper'  && userChoice === 'Scissors'){
+        result = 'YOU WON'
+    }
+    if(computerChoice === 'Paper'  && userChoice === 'Rock'){
         result = 'YOU LOST'
     }
+    if(computerChoice === 'Scissors'  && userChoice === 'Rock'){
+        result = 'YOU WON'
+    }
+    if(computerChoice === 'Scissors'  && userChoice === 'Paper'){
+        result = 'YOU LOST'
+    }
+    resultDisplay.innerHTML = result
 }
